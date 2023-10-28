@@ -1,95 +1,52 @@
+'use client'
+
+import React, { useState } from "react";
+
 import Image from 'next/image'
-import styles from './page.module.css'
+import Search from "@/components/search/search";
+import News from "@/components/news/news";
+import Stats from "@/components/stats/stats";
+import Graph from "@/components/graph/graph";
+import Prediction from "@/components/prediction/prediction";
+import Advice from "@/components/advice/advice";
 
+import "./page.css"
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+    const [stockData, setStockData] = useState({});
+    const [news, setNews]  = useState([]);
+    const [prediction, setPrediction]  = useState(null);
+    const [percentage, setPercentage]  = useState(null);
+    const [advice, setAdvice]  = useState(null);
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+    const [history, setHistory]  = useState([]);
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    return (
+        <main className="main section_padding">
+            <div className="container">
+                <Search setStockData={setStockData} setNews={setNews} setHistory={setHistory} setPrediction={setPrediction} setPercentage={setPercentage} setAdvice={setAdvice}/>
+                <div className="content">
+                    <News news={news}/>
+                    <div className="content__stats">
+                        {console.log(prediction)}
+                        <p className="title">Stock</p>
+                        <Stats title="Price" subtitle="Today Price" price={stockData.today_price}  percent="0" />
+                        <Stats title="Week" subtitle="Week Price" price={stockData.week_price} percent={stockData.week_percent} />
+                        <Stats title="Month" subtitle="Month Price" price={stockData.month_price} percent={stockData.month_percent} />
+                        <Stats title="Year" subtitle="Year Price" price={stockData.year_price} percent={stockData.year_percent}  />
+                        <Stats title="Max" subtitle="Price" price={stockData.beginning_price} percent={stockData.beginning_percent}  />
+
+                    </div>
+                    <Graph data={history}/>
+                </div>
+                <div className="content">
+                    <Prediction PredictionList={prediction} Percentage={percentage}/>
+                    <Advice advice={advice}/>
+                </div>
+            </div>
+
+        </main>
   )
 }

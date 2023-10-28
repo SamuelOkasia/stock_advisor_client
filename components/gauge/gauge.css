@@ -1,0 +1,26 @@
+.baseSemicircle {
+    fill: none;
+
+
+    stroke-width: 15;
+}
+
+.needle {
+    stroke: #FFFFFF;
+    stroke-width: 9px;
+
+
+
+    border-radius: 20px;
+
+
+}
+
+.gaugeText {
+    font-size: 20px;
+    font-weight: bold;
+    text-anchor: middle;
+    fill: #333; /* Text color */
+}
+
+

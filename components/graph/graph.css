@@ -1,0 +1,17 @@
+
+.graph{
+    min-width: 50%;
+
+}
+
+.graph__content{
+    width: 100%;
+}
+
+
+.graph-graph{
+    width: 100%;
+    height: auto;
+
+    max-height: 500px;
+}
