@@ -46,7 +46,6 @@ export default function Home() {
                     <Advice advice={advice}/>
                 </div>
             </div>
-
         </main>
   )
 }
