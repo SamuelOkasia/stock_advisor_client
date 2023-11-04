@@ -21,14 +21,19 @@ export default function Home() {
 
     const [history, setHistory]  = useState([]);
 
+    const [renderGraph, setRenderGraph]  = useState(false);
+
+
 
 
     return (
         <main className="main section_padding">
             <div className="container">
-                <Search setStockData={setStockData} setNews={setNews} setHistory={setHistory} setPrediction={setPrediction} setPercentage={setPercentage} setAdvice={setAdvice}/>
+                <Search setStockData={setStockData} setNews={setNews} setHistory={setHistory} setPrediction={setPrediction} setPercentage={setPercentage} setAdvice={setAdvice} setRenderGraph={setRenderGraph}/>
                 <div className="content">
-                    <News news={news}/>
+                    <div className="content_news">
+                        <News news={news}/>
+                    </div>
                     <div className="content__stats">
                         {console.log(prediction)}
                         <p className="title">Stock</p>
@@ -39,7 +44,9 @@ export default function Home() {
                         <Stats title="Max" subtitle="Price" price={stockData.beginning_price} percent={stockData.beginning_percent}  />
 
                     </div>
-                    <Graph data={history}/>
+                    <div className="content__graph">
+                       <Graph data={history} renderGraph={renderGraph}/>
+                    </div>
                 </div>
                 <div className="content">
                     <Prediction PredictionList={prediction} Percentage={percentage}/>

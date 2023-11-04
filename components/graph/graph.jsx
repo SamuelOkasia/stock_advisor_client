@@ -6,7 +6,7 @@ import Chart from 'chart.js/auto';
 
 import './graph.css'
 
-const Graph = ({ data }) => {
+const Graph = ({ data, renderGraph }) => {
     const [chartData, setChartData] = useState({});
 
     useEffect(() => {
@@ -81,7 +81,10 @@ const Graph = ({ data }) => {
         <div className="graph">
             <div className="graph__content">
                 <p className="title">Visuals</p>
-                {chartData.labels?.length ? <Bar className="graph-graph" data={chartData}/> : <p></p>}
+                {
+                    renderGraph && (chartData.labels?.length ? <Bar className="graph-graph" data={chartData}/> : <p>No data available</p>)
+                }
+
             </div>
 
         </div>

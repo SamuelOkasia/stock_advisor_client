@@ -1,7 +1,6 @@
 
 .graph{
-    min-width: 50%;
-
+    width: 100%;
 }
 
 .graph__content{
@@ -9,9 +8,7 @@
 }
 
 
-.graph-graph{
+.graph-graph {
+    min-width: 500px;
     width: 100%;
-    height: auto;
-
-    max-height: 500px;
 }
