@@ -23,13 +23,14 @@ const Prediction = ( {PredictionList, Percentage} ) => {
             </div>
 
             <div className="prediction__values subtitle">
-                {/*<Value Day={"Mon | 08"} Price={"236.87"}/>*/}
 
                 {
                     Array.isArray(PredictionList) &&
                     PredictionList.map((item, index) => (
-                    <Value Day={item[0]} Price={item[1]} />
-                ))}
+                        <Value key={index} Day={item[0]} Price={item[1]} />
+                    ))
+                }
+
 
             </div>
 

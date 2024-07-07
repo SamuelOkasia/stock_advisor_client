@@ -6,7 +6,6 @@ const Advice = ( {advice} ) => {
     return (
         <div className="advice">
             <p className="title">Should you buy now</p>
-            {console.log(advice)}
 
 
             { advice &&

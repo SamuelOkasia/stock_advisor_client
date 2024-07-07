@@ -53,3 +53,13 @@
     font-weight: 400;
     line-height: normal;
 }
+
+.spinner {
+    animation: spin 1s linear infinite;
+    color: white;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
